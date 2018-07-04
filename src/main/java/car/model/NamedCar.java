@@ -30,6 +30,6 @@ public class NamedCar extends Car{
     }
     // constructor//name 추가 // getter
     public CarDTO createCarDTO(){
-        return new CarDTO(name, super.getPosition());
+        return new CarDTO(name, createCarDTO().getPosition());
     }
 }

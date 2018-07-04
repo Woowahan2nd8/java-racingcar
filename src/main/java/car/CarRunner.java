@@ -3,10 +3,7 @@ package car;
 import car.domain.CarDTO;
 import car.model.Car;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 public class CarRunner<T extends Car> {
 
@@ -42,13 +39,6 @@ public class CarRunner<T extends Car> {
         return result;
     }
 
-    protected List<T> getCars(){
-        return cars;
-    }
-    protected Iterator<T> getCarIterator(){
-        return cars.iterator();
-    }
-
     public List<CarDTO> convertToCarDTOs(){
         List<CarDTO> carDTOs = new ArrayList<CarDTO>(cars.size());
         Iterator<T> iterator = cars.iterator();
@@ -56,7 +46,7 @@ public class CarRunner<T extends Car> {
             T car = iterator.next();
             carDTOs.add(car.createCarDTO());
         }
-        return carDTOs;
+        return Collections.unmodifiableList(carDTOs);
     }
 
 }
